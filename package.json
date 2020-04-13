@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "react-scripts start"
+    "start": "react-scripts start"
   },
   "keywords": [],
   "author": "Abdulazeez Abdulazeez Adeshina <laisibizness@gmail.com> (github.com/Youngestdev)",
@@ -14,5 +14,17 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "unstated-next": "^1.1.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
