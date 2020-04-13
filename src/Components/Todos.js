@@ -15,7 +15,6 @@ function useTodos(initialstate = [{todo: "Test todo"}]) {
   const addTodo = e => {
     e.preventDefault()
     setTodo(todos.push({todo: todo}))
-    alert(todos)
     setTodoItem("")
   }
 
@@ -36,7 +35,7 @@ function DisplayTodos() {
       <button onClick={todos_container.addTodo}>Add Todo</button>
       {        
         todos_container.todos.map(todo => (
-          <p key={todo.todo}>{todo.todo}</p> 
+          <p key={todo.todo}>{todo.todo}</p>         
         ))
       }
     </div>
