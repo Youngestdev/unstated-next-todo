@@ -34,6 +34,7 @@ function DisplayTodos() {
       <input type="text" placeholder="Write an article" value={todos_container.todo} onChange={todos_container.handleInput} />
       <button onClick={todos_container.addTodo}>Add Todo</button>
       {        
+        // I think the problem is here. Can't debug, perhaps I need some sleep. Sighs
         todos_container.todos.map(todo => (
           <p key={todo.todo}>{todo.todo}</p>         
         ))
