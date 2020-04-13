@@ -14,12 +14,17 @@ function useTodos(initialstate = [{todo: "Test todo"}]) {
 
   const addTodo = e => {
     e.preventDefault()
-    setTodo(todos.push({todo: todo}))
+    setTodo([...todos, {todo}])
     setTodoItem("")
   }
 
+  const removeTodo = id => {
+    const todoList = todos.filter(todo => todo.todo !== id)
+    return setTodo(todoList)
+  }
+
   // Erhh... Is this the best thing to do?
-  let removeTodo = (todo_id) => setTodo(delete todos[todo_id])
+  // let removeTodo = (todo_id) => setTodo(delete todos[todo_id])
   return { todos, todo, addTodo, removeTodo, handleInput }
 }
 
@@ -36,7 +41,9 @@ function DisplayTodos() {
       {        
         // I think the problem is here. Can't debug, perhaps I need some sleep. Sighs
         todos_container.todos.map(todo => (
-          <p key={todo.todo}>{todo.todo}</p>         
+          <>
+          <p key={todo.todo}>{todo.todo}</p><button onClick={() => todos_container.removeTodo(todo.todo)}>Delete Todo</button>        
+          </>
         ))
       }
     </div>
