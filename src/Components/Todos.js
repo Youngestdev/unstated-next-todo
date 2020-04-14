@@ -22,31 +22,36 @@ function useTodos(initialstate = [{todo: "Test todo"}]) {
     const todoList = todos.filter(todo => todo.todo !== id)
     return setTodo(todoList)
   }
-
-  // Erhh... Is this the best thing to do?
-  // let removeTodo = (todo_id) => setTodo(delete todos[todo_id])
+  
   return { todos, todo, addTodo, removeTodo, handleInput }
 }
 
 export let Todos = createContainer(useTodos)
 
-function DisplayTodos() {
+function AddTodo() {
   let todos_container = Todos.useContainer()
-
   return (
-    <div>
-      <label for="todo">Todo: </label>
-      <input type="text" placeholder="Write an article" value={todos_container.todo} onChange={todos_container.handleInput} />
-      <button onClick={todos_container.addTodo}>Add Todo</button>
-      {        
-        // I think the problem is here. Can't debug, perhaps I need some sleep. Sighs
+  <React.Fragment>
+    <label for="todo">Todo: </label>
+    <input type="text" placeholder="Write an article" value={todos_container.todo} onChange={todos_container.handleInput} />
+    <button onClick={todos_container.addTodo}>Add Todo</button>
+  </React.Fragment>
+  )
+}
+
+function DisplayTodos() {  
+  let todos_container = Todos.useContainer()
+  return (
+    <React.Fragment>      
+      <AddTodo />
+      { 
         todos_container.todos.map(todo => (
           <>
           <p key={todo.todo}>{todo.todo}</p><button onClick={() => todos_container.removeTodo(todo.todo)}>Delete Todo</button>        
           </>
         ))
       }
-    </div>
+    </React.Fragment>
   )
 }
 
