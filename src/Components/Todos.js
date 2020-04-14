@@ -26,16 +26,27 @@ function useTodos(initialstate = [{todo: "Test todo"}]) {
   return { todos, todo, addTodo, removeTodo, handleInput }
 }
 
-export let Todos = createContainer(useTodos)
+let Todos = createContainer(useTodos)
 
 function AddTodo() {
   let todos_container = Todos.useContainer()
   return (
   <React.Fragment>
-    <label for="todo">Todo: </label>
     <input type="text" placeholder="Write an article" value={todos_container.todo} onChange={todos_container.handleInput} />
     <button onClick={todos_container.addTodo}>Add Todo</button>
   </React.Fragment>
+  )
+}
+
+function Todo({ todo }) {
+  let todos_container = Todos.useContainer()
+  return (
+      <ul>
+        <li key={todo.todo}>
+          <label> {todo.todo} </label>
+          <button onClick={() => todos_container.removeTodo(todo.todo)}>Delete Todo</button>
+        </li>
+      </ul>
   )
 }
 
@@ -46,9 +57,7 @@ function DisplayTodos() {
       <AddTodo />
       { 
         todos_container.todos.map(todo => (
-          <>
-          <p key={todo.todo}>{todo.todo}</p><button onClick={() => todos_container.removeTodo(todo.todo)}>Delete Todo</button>        
-          </>
+          <Todo todo={todo} />
         ))
       }
     </React.Fragment>
