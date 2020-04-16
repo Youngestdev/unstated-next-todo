@@ -4,6 +4,15 @@ body {
 }
 
 li {
-  list-style-type: upper-roman
+  list-style-type: lower-roman
 }
 
+input {
+  box-sizing: border-box
+}
+
+button {
+  border-radius: 15px;
+  font-family: inherit;
+  font-size: 18px  
+} */
