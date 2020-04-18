@@ -31,9 +31,7 @@ let Todos = createContainer(useTodos)
 function Todo({ todo }) {
   let todosContainer = Todos.useContainer()
   return (
-    <>
-      <input type="text" placeholder="Write an article" value={todosContainer.todo} onChange={todosContainer.handleInput} />
-      <button onClick={todosContainer.addTodo}>Add Todo</button>
+    <>     
       <ul>
         <li key={todo.todo}>
           <label> {todo.todo} </label>
@@ -47,9 +45,10 @@ function Todo({ todo }) {
 function DisplayTodos() {  
   let todosContainer = Todos.useContainer()
   return (
-    <React.Fragment>      
-      <AddTodo />
-      { 
+    <React.Fragment>
+      <input type="text" placeholder="Write an article" value={todosContainer.todo} onChange={todosContainer.handleInput} />
+      <button onClick={todosContainer.addTodo}>Add Todo</button>
+      {
         todosContainer.todos.map(todo => (
           <Todo todo={todo} />
         ))
