@@ -2,17 +2,3 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   background-color: antiquewhite;
 }
-
-li {
-  list-style-type: lower-roman
-}
-
-input {
-  box-sizing: border-box
-}
-
-button {
-  border-radius: 15px;
-  font-family: inherit;
-  font-size: 18px  
-} */

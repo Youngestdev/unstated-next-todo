@@ -32,10 +32,10 @@ function Todo({ todo }) {
   let todosContainer = Todos.useContainer()
   return (
     <>     
-      <ul>
-        <li key={todo.todo}>
-          <label> {todo.todo} </label>
-          <button onClick={() => todosContainer.removeTodo(todo.todo)}>Delete Todo</button>
+      <ul className="w3-ul w3-card-4">
+        <li key={todo.todo} className="w3-display-container" >
+           {todo.todo}
+           <span className="w3-button w3-transparent w3-display-right" onClick={() => todosContainer.removeTodo(todo.todo)}>&times;</span>
         </li>
       </ul>
     </>
@@ -46,8 +46,10 @@ function DisplayTodos() {
   let todosContainer = Todos.useContainer()
   return (
     <React.Fragment>
-      <input type="text" placeholder="Write an article" value={todosContainer.todo} onChange={todosContainer.handleInput} />
-      <button onClick={todosContainer.addTodo}>Add Todo</button>
+      <input type="text" className="w3-input w3-border w3-round" placeholder="Write an article" value={todosContainer.todo} onChange={todosContainer.handleInput} />
+      <br />
+      <button onClick={todosContainer.addTodo} className="w3-button w3-round w3-black">Add Todo</button>
+      <hr />
       {
         todosContainer.todos.map(todo => (
           <Todo todo={todo} />
